@@ -94,30 +94,108 @@ Each page includes **one emotional anchor line**, for example:
 
 ## 📂 Project Structure
 ```
-app/
-(auth)/
-(app)/
-dashboard/
-check-in/
-journal/
-insights/
-components/
-AppShell.tsx
-InsightCard.tsx
-ui.tsx
-styles/
+WELLNESS-DASHBOARD/
+├─ app/
+│  ├─ (auth)/                     # Public authentication routes
+│  │  ├─ login/
+│  │  │  └─ page.tsx
+│  │  ├─ register/
+│  │  │  └─ page.tsx
+│  │  └─ layout.tsx               # AuthShell layout
+│  │
+│  ├─ (app)/                      # Authenticated app shell
+│  │  ├─ dashboard/
+│  │  │  └─ page.tsx
+│  │  ├─ checkin/
+│  │  │  └─ page.tsx
+│  │  ├─ journal/
+│  │  │  └─ page.tsx
+│  │  ├─ insights/
+│  │  │  └─ page.tsx
+│  │  └─ layout.tsx               # AppShell (header + nav)
+│  │
+│  ├─ api/                        # API routes
+│  │  ├─ mood/
+│  │  │  └─ route.ts
+│  │  ├─ journal/
+│  │  │  └─ route.ts
+│  │  └─ insights/
+│  │     ├─ route.ts
+│  │     └─ generate/
+│  │        └─ route.ts
+│  │
+│  ├─ globals.css                 # Global styles + theme tokens
+│  ├─ layout.tsx                  # Root layout
+│  └─ page.tsx                    # Landing page
+│
+├─ components/
+│  ├─ layout/
+│  │  ├─ AppShell.tsx             # Header, nav pills, page container
+│  │  └─ AuthShell.tsx            # Centered auth layout
+│  │
+│  ├─ ui/
+│  │  ├─ StillCard.tsx
+│  │  ├─ StillButton.tsx
+│  │  ├─ StillInput.tsx
+│  │  ├─ StillTextarea.tsx
+│  │  ├─ StillLabel.tsx
+│  │  └─ index.ts
+│  │
+│  ├─ charts/
+│  │  └─ MoodTrendChart.tsx
+│  │
+│  ├─ insights/
+│  │  └─ InsightCard.tsx
+│  │
+│  ├─ mood/
+│  │  ├─ MoodPicker.tsx
+│  │  └─ TagChips.tsx
+│  │
+│  └─ index.ts                    # Barrel exports
+│
+├─ lib/
+│  ├─ seed/
+│  │  ├─ seedMoods.ts             # 30-day seeded mood data
+│  │  └─ seedInsights.ts          # Fallback insights
+│  │
+│  ├─ analytics/
+│  │  ├─ moodStats.ts             # averages, streaks, distribution
+│  │  └─ insightLogic.ts
+│  │
+│  ├─ utils/
+│  │  ├─ dates.ts
+│  │  ├─ clamp.ts
+│  │  └─ format.ts
+│  │
+│  └─ prisma.ts                   # Prisma client (if used)
+│
+├─ prisma/
+│  └─ schema.prisma
+│
+├─ middleware.ts                  # Auth protection
+├─ public/                        # (optional) icons, images
+│
+├─ .env
+├─ .gitignore
+├─ package.json
+├─ package-lock.json
+├─ postcss.config.js
+├─ tailwind.config.ts
+├─ tsconfig.json
+└─ README.md
+
 ```
 
 ## 🚀 Getting Started
 
-1. # install dependencies
-    npm install
+1. install dependencies
+    > npm install
 
-2. # run development server
-    npm run dev
+2. run development server
+    > npm run dev
 
 3. Open:
-    http://localhost:3000
+    > http://localhost:3000
 
 
 ## ❤️ Final Note
