@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Still palette */
+  --bg: 247 226 230;       /* blush */
+  --surface: 219 199 201;  /* mauve card */
+  --surface-2: 232 216 218;/* lighter surface */
+  --input: 212 220 216;    /* cool sage/grey */
+  --border: 0 0 0;         /* for alpha borders */
+  --text: 25 20 21;        /* near-black */
+  --muted: 25 20 21;       /* same base, lower opacity */
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background: rgb(var(--bg));
+  color: rgb(var(--text));
+  font-family: var(--font-sans), system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+
+/* nice selection */
+::selection {
+  background: rgba(0,0,0,0.08);
+}
+
+.still-blobs{
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.65;
+  filter: blur(60px);
+}
+.still-blobs::before,
+.still-blobs::after{
+  content:"";
+  position:absolute;
+  width: 520px;
+  height: 520px;
+  border-radius: 999px;
+}
+.still-blobs::before{
+  left: -120px;
+  top: 120px;
+  background: rgb(var(--accentA));
+}
+.still-blobs::after{
+  right: -140px;
+  bottom: 80px;
+  background: rgb(var(--accentB));
+}
+

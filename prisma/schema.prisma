@@ -1,0 +1,67 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql" // change to "sqlite" if using SQLite
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String       @id @default(cuid())
+  email        String       @unique
+  passwordHash String
+  createdAt    DateTime     @default(now())
+  moodEntries  MoodEntry[]
+  journal      JournalEntry[]
+  insights     Insight[]
+}
+
+model MoodEntry {
+  id        String     @id @default(cuid())
+  userId    String
+  user      User       @relation(fields: [userId], references: [id])
+  date      DateTime
+  moodScore Int        // -2..+2
+  intensity Int        // 1..5
+  note      String?    @db.Text
+  tags      MoodTag[]
+  createdAt DateTime   @default(now())
+
+  @@unique([userId, date]) // one per day
+  @@index([userId, date])
+}
+
+model MoodTag {
+  id         String    @id @default(cuid())
+  moodEntryId String
+  moodEntry  MoodEntry @relation(fields: [moodEntryId], references: [id], onDelete: Cascade)
+  tag        String    // e.g. "stress", "sleep", "workload"
+
+  @@index([moodEntryId])
+}
+
+model JournalEntry {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  date      DateTime
+  prompt    String?
+  text      String   @db.Text
+  createdAt DateTime @default(now())
+
+  @@index([userId, date])
+}
+
+model Insight {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  type      String   // "weekday", "tag", "volatility", "journal"
+  title     String
+  message   String   @db.Text
+  rangeDays Int
+  createdAt DateTime @default(now())
+
+  @@index([userId, createdAt])
+}
