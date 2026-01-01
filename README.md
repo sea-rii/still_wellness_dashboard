@@ -18,7 +18,7 @@ Still takes a different approach:
 
 Instead, it focuses on **showing up**, **noticing patterns**, and **letting meaning emerge naturally**.
 
-> *Patterns don’t judge — they just show up.*
+> *Patterns don’t judge, they just show up.*
 
 
 ## 🧠 Core Features
@@ -53,7 +53,7 @@ Instead, it focuses on **showing up**, **noticing patterns**, and **letting mean
 
 Examples:
 - *“Based on 18 check-ins over the last 30 days”*
-- *“This pattern isn’t strong yet — and that’s okay.”*
+- *“This pattern isn’t strong yet - and that’s okay.”*
 
 ### 🔁 Regenerate Insights
 - Allows users to surface alternative patterns
@@ -80,6 +80,21 @@ Each page includes **one emotional anchor line**, for example:
 - Check-in: *“However today felt, it’s enough to notice it.”*
 - Journal: *“You don’t need to explain yourself here.”*
 - Insights: *“Patterns don’t judge — they just show up.”*
+
+
+## 📸 Screenshots
+
+### Dashboard page
+![Dashboard Page](./screenshots/dashboard.png)
+
+### Mood Trend
+A calm overview of the last 30 days — no streak pressure, no judgment.
+![Dashboard](./screenshots/mood-trend.png)
+
+### Insights
+Soft, evidence-based patterns grounded in real data (never diagnoses).
+![Insights](./screenshots/insights1.png)
+![Insights](./screenshots/insights2.png)
 
 
 ## 🛠 Tech Stack
